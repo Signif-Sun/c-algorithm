@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+/*------------插入排序------要点是：前两位排完，前三排，依次...在前面基础上排---*/
+void insert_sort(int nums[],int N)
+{
+	int j,cnt = 1;
+	int tmp;
+	for(; cnt < N; cnt++)
+	{
+		tmp = nums[cnt];
+		for(j = cnt; j > 0 && tmp < nums[j - 1]; j--)
+		{
+			nums[j] = nums[j - 1];
+		}
+		nums[j] = tmp;		
+	}
+}
+//测试函数
+void insert_sort_t()
+{
+	int nums[10] = {3,1,5,2,6,0,8,4,9,7};
+	insert_sort(nums,10);
+	for(int i = 0;i < 10;i++)
+	{
+		printf("%d\n",nums[i]);
+	}
+}
+/*------------插入排序------要点是：前两位排完，前三排，依次...在前面基础上排---*/
