@@ -1,0 +1,37 @@
+#include <stdio.h>
+
+/*---------shell排序------要点是：首先确定步长序列，然后等于步长到N，最后再插入排序---*/
+void shell_sort(int nums[],int N)
+{
+	int i,j,inc;
+	int tmp;
+	for(inc = N / 2; inc > 0; inc /= 2)    //确定步长序列
+	{
+		for(i = inc; i < N; i++)     //然后等于步长到N
+		{
+			tmp = nums[i];
+			for(j = i; j >= inc; j -= inc)    //最后检出所选序列再插入排序
+			{
+				if(tmp < nums[j - inc])
+				{
+					nums[j] = nums[j - inc];
+				}
+				else
+					break;				
+			}
+			nums[j] = tmp;
+		}
+	}
+}
+
+//测试函数
+void shell_sort_t()
+{
+	int nums[10] = {3,1,5,2,6,0,8,4,9,7};
+	shell_sort(nums,10);
+	for(int i = 0;i < 10;i++)
+	{
+		printf("%d\n",nums[i]);
+	}
+}
+/*---------shell排序------要点是：首先确定步长序列，然后等于步长到N，最后再插入排序---*/
